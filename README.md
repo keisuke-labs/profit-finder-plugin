@@ -41,8 +41,10 @@ MCP サーバー（`pf`）は OAuth で保護されています。**招待済み
 
 | スキル | 内容 |
 |---|---|
-| `pf-candidates` | 直近の調査から利益候補を一覧する |
+| `pf-candidates` | 直近の調査から利益候補を一覧し、カードの詳細や run ごとの商品リストを見る |
 | `pf-listing-check` | 候補を出品対象にする／見送る／見送りから戻す（書き込み前に確認） |
 | `pf-soldout` | メルカリ候補の売り切れを付ける／外す（書き込み前に確認） |
 | `pf-stock-check` | メルカリ候補がいまも買えるかを実ページで確かめ、売り切れは確認のうえ記録する |
 | `pf-lowest-price` | メルカリと eBay のいまの最安値を実ページで調べる |
+
+`pf-stock-check` と `pf-lowest-price` は Claude in Chrome で実ページを読むため、Claude in Chrome が使える環境が必要です。

@@ -17,7 +17,13 @@ description: 保存済みの調査結果から、利益が見込める出品候�
    - 指定が無ければ `median`
 2. 返ってきた `top5`（利益上位 5 枚）と `newlyFound`（直近 7 日の新着）を、名前・利益・`card_id` の形で要約して伝えます。
 3. `index_stale` が true のとき、または `note` があるときは、その内容をそのまま伝えます。`index_stale` が true の間は件数が null で `top5` も空になるため、数字を補ったり推測したりしません。
-4. 利用者がカードを指定したら、`pf_ledger_get_card`（`card_id`、`basis`）で詳細を取得します。`basis` は手順 1 で選んだ値を使います。手順 1 を経ずに最初からカードを指定されたときは、`pf_overview` を呼ばず、利用者の言葉から手順 1 と同じ規則で `basis` を選びます。メルカリ候補の URL（`url`）と価格（`price_jpy`）、`best_mercari_id`、eBay の出品（`url`・`price_usd`）を示します。`sold_out_listings` にある候補には「売り切れ済み」と添えます。
+4. 利用者がカードを指定したら、`pf_ledger_get_card`（`card_id`、`basis`）で詳細を取得し、次の内容を示します。
+   - `basis` の選び方: 手順 1 で選んだ値を使います。手順 1 を経ずに最初からカードを指定されたときは、`pf_overview` を呼ばず、利用者の言葉から手順 1 と同じ規則で選びます。
+   - メルカリの販売中: 販売中の候補である `mercari.listings` から、URL（`url`）と価格（`price_jpy`）を示します。
+   - 売り切れ済み: 売り切れの目印が付いた候補は `mercari.sold_out_listings` に入るため、「売り切れ済み」として別に示します。
+   - `mercari.best_mercari_id` が null のとき: 販売中の候補が無いと伝えます。
+   - eBay の出品中: `ebay.active_listings`（`url`・`price_usd`）を示します（`ebay.listings` は売却実績です）。
+   - 売価: `economics.sale_label` を添えて、どの値かを伝えます。
 5. run ごとの商品リストを聞かれたら、`pf_listings_list`（`run_dir` は省略、`limit` は 20）を呼び、商品名と想定利益を要約します。`include_untracked` を付けない既定では、チェック済みの行だけが返るため、「その run で出品対象として記録された行」として示します。未チェックの商品も含めて見たいと言われたときだけ、`include_untracked: true` を付けます。`cursor` による続きの取得は、利用者が続きを求めたときだけ行います。
 6. 最後に、表示した数字は調査を回した時点の値であることを伝えます。いまの在庫や最安値は `pf-stock-check`・`pf-lowest-price` で確かめられると案内します。
 
