@@ -24,6 +24,25 @@ MCP サーバー（`pf`）は OAuth で保護されています。**招待済み
 
 3. `/mcp` を開き、`plugin:profit-finder:pf` を選んで認証します。ブラウザが開くので、招待されたアカウントでサインインしてください。
 
+#### 更新するとき
+
+新しい版が出たら、marketplace の情報を更新してから、プラグインを更新します。
+
+Claude Code の中で行う場合:
+
+1. `/plugin marketplace update profit-finder` を実行します。
+2. `/plugin` の画面で profit-finder を更新します（更新が出ないときは、アンインストールしてから入れ直します）。
+3. `/reload-plugins` を実行します。反映されないときは Claude Code を再起動します。
+
+ターミナルで行う場合:
+
+```
+claude plugin marketplace update profit-finder
+claude plugin update profit-finder@profit-finder
+```
+
+実行したあと、Claude Code を再起動すると反映されます。
+
 ### Cowork
 
 1. Customize > Plugins > Add marketplace に `keisuke-labs/profit-finder-plugin` を入力して追加します。
