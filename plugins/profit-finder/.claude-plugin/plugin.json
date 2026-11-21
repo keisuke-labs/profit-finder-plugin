@@ -1,0 +1,8 @@
+{
+  "name": "profit-finder",
+  "version": "0.1.0",
+  "description": "eBay Profit Finder の調査結果を会話で扱うスキルと MCP 接続（招待済みの利用者向け）",
+  "author": {
+    "name": "keisuke-labs"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "pf": {
+      "type": "http",
+      "url": "https://mcp-pf.kekke-developer.com/mcp",
+      "oauth": {
+        "callbackPort": 47823
+      }
+    }
+  }
+}
