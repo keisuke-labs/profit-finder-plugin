@@ -30,9 +30,10 @@ MCP サーバー（`pf`）は OAuth で保護されています。**招待済み
 
 Claude Code の中で行う場合:
 
-1. `/plugin marketplace update profit-finder` を実行します。
-2. `/plugin` の画面で profit-finder を更新します（更新が出ないときは、アンインストールしてから入れ直します）。
-3. `/reload-plugins` を実行します。反映されないときは Claude Code を再起動します。
+1. `/plugin marketplace update profit-finder` を実行します。プラグインの version も上がり、「1 plugin bumped」のように表示されます。
+2. `/reload-plugins` を実行します。通常はこれだけで反映されます。
+
+反映されないときは、`/plugin` の画面で profit-finder を更新してください（更新が出なければ、アンインストールしてから入れ直します）。それでも反映されなければ、Claude Code を再起動します。
 
 ターミナルで行う場合:
 
